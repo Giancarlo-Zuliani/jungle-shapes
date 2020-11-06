@@ -6,7 +6,8 @@
 
 img{
   width:15%;
-  margin: 5px;
+  padding: 10px;
+  transition: transform linear .2s;
 }
 
 body{
@@ -34,5 +35,11 @@ section{
   flex-wrap: wrap;
 }
 section img{
-  width:5%;
+  width:10%;
+}
+
+
+img:hover{
+  transform:scale(1.3);
+  cursor:pointer;
 }
