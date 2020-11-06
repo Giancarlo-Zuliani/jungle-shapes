@@ -5,7 +5,34 @@
 }
 
 img{
-  margin: 50px auto;
-  width:50px;
-  height:50px;
+  width:15%;
+  margin: 5px;
+}
+
+body{
+  height:100vh;
+  background-image:url('../resources/background.jpg');
+  background-size: cover;
+}
+
+
+header{
+  width:50%;
+  margin:100px auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height:100px;
+}
+
+section{
+  width:75%;
+  margin: auto;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+section img{
+  width:9%;
 }
