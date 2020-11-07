@@ -18,14 +18,19 @@ body{
 
 
 header{
-  width:50%;
-  margin:100px auto;
+  width:100%;
+  margin:20px auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
   height:100px;
 }
 
+#headercontainer{
+  width:50%;
+  height:150px;
+  margin: auto;
+}
 section{
   width:75%;
   margin: auto;
@@ -33,6 +38,7 @@ section{
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  display: none;
 }
 section img{
   width:5%;
@@ -42,4 +48,11 @@ section img{
 img:hover{
   transform:scale(1.3);
   cursor:pointer;
+}
+
+
+@media screen and (max-width:1240px){
+  section img{
+    width:10%;
+  }
 }
