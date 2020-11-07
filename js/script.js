@@ -1,8 +1,3 @@
-var mainMenuBtn = $('main button');
-
-$(document).ready(function(){
-
-
 function generateRandomNum(length,maxNum){
   var arr = [];
   for(i=0;i < length ; i++){
@@ -27,12 +22,20 @@ function renderShapes(arr,target){
     }
 }
 
+var mainMenuBtn = $('main button');
 
 mainMenuBtn.click(function(){
-    $('main button').animate({
+  for(i=0; i< 7 ; i++){
+    $('main button')[i].animate({
       'right':'800px',
-    },500)
+      'opacity':'0',
+    },(i+1)*500)
+  }
+
+  $('main').fadeOut(500);
 })
+
+
 
 renderShapes( generateRandomNum(2,20) , "picked");
 renderShapes( generateRandomNum(20,20) , "field");
@@ -63,6 +66,4 @@ function wrongShape(){
 $('section img').click(function(){
   let n = this.src;
   targetShape.includes(n) ? rightShape(this) : wrongShape(this);
-})
-
 })
