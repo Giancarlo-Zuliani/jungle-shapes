@@ -15,15 +15,13 @@ $('#level1').click(function(){
 })
 
 function animateBanner(){
-
   setTimeout(()=>{
-  let banner = $('<h2> Level 1 /2 <h2>').attr('class','levelbanner');
+  let banner = $('<h2>  <h2>').attr('class','levelbanner');
   $('.banner').append(banner);
-  $('.levelbanner').text('ciao')
   $('.levelbanner').animate({
-    'width':'500px',
-    'height' : '100px',
-  },1000,() => {
+    'width':'570px',
+    'height' : '400px',
+  },300,() => {
     setTimeout(() =>{
       $('.levelbanner').hide()
     },1500);
@@ -61,11 +59,11 @@ function renderShapes(arr,target){
 // renderShapes( generateRandomNum(2,20) , "picked");
 // renderShapes( generateRandomNum(20,20) , "field");
 
-$('header').fadeOut(10000,function(){
-    $('section').fadeIn(5000,function(){
-      $('section').fadeOut(20000)
-    });
-});
+// $('header').fadeOut(10000,function(){
+//     $('section').fadeIn(5000,function(){
+//       $('section').fadeOut(20000)
+//     });
+// });
 
 var pickedShape=$('header img');
 var targetShape=[];
