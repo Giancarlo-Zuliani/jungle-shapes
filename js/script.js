@@ -25,11 +25,13 @@ function renderShapes(arr,target){
     }
 }
 
-renderShapes( generateRandomNum(4,20) , "picked");
+renderShapes( generateRandomNum(2,20) , "picked");
 renderShapes( generateRandomNum(20,20) , "field");
 
-$('header').fadeOut(5000,function(){
-    $('section').fadeIn(5000);
+$('header').fadeOut(10000,function(){
+    $('section').fadeIn(5000,function(){
+      $('section').fadeOut(20000)
+    });
 });
 
 var pickedShape=$('header img');
@@ -40,7 +42,16 @@ for(i=0;i<pickedShape.length;i++){
   targetShape.push(ur);
 }
 
+function rightShape(shape){
+$(shape).fadeOut(300);
+}
+
+
+function wrongShape(){
+
+}
+
 $('section img').click(function(){
   let n = this.src;
-  targetShape.includes(n) ? console.log('hahi vinto') : console.log('perso')
+  targetShape.includes(n) ? rightShape(this) : wrongShape(this);
 })
