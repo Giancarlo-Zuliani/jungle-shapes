@@ -1,3 +1,16 @@
+
+
+$('main button').click(function(){
+  for(i=0; i< $('main button').length ; i++){
+    $('main button')[i].animate({
+      'right':'800px',
+      'opacity':'0',
+    },(i+1)*700)
+  }
+  $('main').fadeOut(900);
+})
+
+
 function generateRandomNum(length,maxNum){
   var arr = [];
   for(i=0;i < length ; i++){
@@ -22,29 +35,18 @@ function renderShapes(arr,target){
     }
 }
 
-var mainMenuBtn = $('main button');
-
-mainMenuBtn.click(function(){
-  for(i=0; i< 7 ; i++){
-    $('main button')[i].animate({
-      'right':'800px',
-      'opacity':'0',
-    },(i+1)*500)
-  }
-
-  $('main').fadeOut(500);
-})
 
 
 
-renderShapes( generateRandomNum(2,20) , "picked");
-renderShapes( generateRandomNum(20,20) , "field");
 
-$('header').fadeOut(10000,function(){
-    $('section').fadeIn(5000,function(){
-      $('section').fadeOut(20000)
-    });
-});
+// renderShapes( generateRandomNum(2,20) , "picked");
+// renderShapes( generateRandomNum(20,20) , "field");
+
+// $('header').fadeOut(10000,function(){
+//     $('section').fadeIn(5000,function(){
+//       $('section').fadeOut(20000)
+//     });
+// });
 
 var pickedShape=$('header img');
 var targetShape=[];

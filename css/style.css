@@ -2,6 +2,20 @@
   box-sizing: border-box;
   margin:0;
   padding:0;
+  font-family: 'fan',sans-serif;
+}
+
+@font-face {
+  font-family:'fan';
+  src: url('../resources/fonts/jf.ttf');
+}
+
+#title{
+  font-size: 80px;
+  width:80%;
+  margin:25px auto;
+  color:yellow;
+  text-align: center;
 }
 
 img{
@@ -15,14 +29,15 @@ body{
   background-image:url('../resources/background.jpg');
   background-size: cover;
 }
+
 main{
   width: 70%;
   margin: 0 auto;
 }
 button{
-  margin:25px 20% 25px ;
-  width:60%;
-  height:80px;
+  margin:25px 25% 25px ;
+  width:50%;
+  height:50px;
   background-color: crimson;
   position:relative;
   right:0;
