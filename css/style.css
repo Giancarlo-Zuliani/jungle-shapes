@@ -1,3 +1,8 @@
+@font-face {
+  font-family:'fan';
+  src: url('../resources/fonts/jf.ttf');
+}
+
 *{
   box-sizing: border-box;
   margin:0;
@@ -5,10 +10,6 @@
   font-family: 'fan',sans-serif;
 }
 
-@font-face {
-  font-family:'fan';
-  src: url('../resources/fonts/jf.ttf');
-}
 
 #title{
   font-size: 80px;
@@ -36,6 +37,7 @@ main{
   width: 70%;
   margin: 0 auto;
 }
+
 button{
   margin:10px 25%;
   width:50%;
@@ -46,10 +48,33 @@ button{
   background-repeat: no-repeat;
   position:relative;
   right:0;
-  border: none;
+  border:2px lightgreen solid;
   border-radius: 30px;
   font-size: 40px;
   color:black;
+  transition: transform linear .2s
+}
+.levelbanner{
+  width:10;
+  height: 10;
+  text-align: center;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  background-color: red;
+}
+button:hover{
+  cursor:pointer;
+  transform:scale(1.2);
+}
+h2{
+  text-align: center;
+  line-height: 50%;
+  font-size: 80px;
+}
+.disabled{
+  filter:brightness(25%);
 }
 
 button span{
@@ -83,7 +108,6 @@ section{
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  display: none;
 }
 section img{
   width:5%;
@@ -95,9 +119,20 @@ img:hover{
   cursor:pointer;
 }
 
+footer{
+  position:absolute;
+  bottom:0;
+  right:0;
+  height: 100px;
+  background-color: blue;
+  width:100%;
+}
 
 @media screen and (max-width:1240px){
   section img{
     width:10%;
+  }
+  body{
+    background-image: url('../resources/bg.jpg');
   }
 }

@@ -10,7 +10,26 @@ $('main button').click(function(){
   $('main').fadeOut(900);
 })
 
+$('#level1').click(function(){
+  animateBanner()
+})
 
+function animateBanner(){
+
+  setTimeout(()=>{
+  let banner = $('<h2> Level 1 /2 <h2>').attr('class','levelbanner');
+  $('.banner').append(banner);
+  $('.levelbanner').text('ciao')
+  $('.levelbanner').animate({
+    'width':'500px',
+    'height' : '100px',
+  },1000,() => {
+    setTimeout(() =>{
+      $('.levelbanner').hide()
+    },1500);
+  })
+},500)
+}
 function generateRandomNum(length,maxNum){
   var arr = [];
   for(i=0;i < length ; i++){
@@ -42,11 +61,11 @@ function renderShapes(arr,target){
 // renderShapes( generateRandomNum(2,20) , "picked");
 // renderShapes( generateRandomNum(20,20) , "field");
 
-// $('header').fadeOut(10000,function(){
-//     $('section').fadeIn(5000,function(){
-//       $('section').fadeOut(20000)
-//     });
-// });
+$('header').fadeOut(10000,function(){
+    $('section').fadeIn(5000,function(){
+      $('section').fadeOut(20000)
+    });
+});
 
 var pickedShape=$('header img');
 var targetShape=[];
