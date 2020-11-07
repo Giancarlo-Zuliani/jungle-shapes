@@ -15,13 +15,20 @@ body{
   background-image:url('../resources/background.jpg');
   background-size: cover;
 }
-
-button{
-  margin:180px auto;
-  width:40%;
-  height:150px;
-  background-color: crimson;
+main{
+  width: 70%;
+  margin: 0 auto;
 }
+button{
+  margin:25px 20% 25px ;
+  width:60%;
+  height:80px;
+  background-color: crimson;
+  position:relative;
+  right:0;
+}
+
+
 header{
   width:100%;
   margin:20px auto;

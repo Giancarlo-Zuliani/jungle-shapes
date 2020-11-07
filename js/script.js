@@ -1,4 +1,6 @@
+var mainMenuBtn = $('main button');
 
+$(document).ready(function(){
 
 
 function generateRandomNum(length,maxNum){
@@ -24,12 +26,13 @@ function renderShapes(arr,target){
       }
     }
 }
-// $('button').click(function(){
-//   $(this).animate({
-//     'margin-left':'100%',
-//     'opacity':'0',
-//   },1500)
-// })
+
+
+mainMenuBtn.click(function(){
+    $('main button').animate({
+      'right':'800px',
+    },500)
+})
 
 renderShapes( generateRandomNum(2,20) , "picked");
 renderShapes( generateRandomNum(20,20) , "field");
@@ -60,4 +63,6 @@ function wrongShape(){
 $('section img').click(function(){
   let n = this.src;
   targetShape.includes(n) ? rightShape(this) : wrongShape(this);
+})
+
 })
