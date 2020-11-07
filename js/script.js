@@ -24,6 +24,12 @@ function renderShapes(arr,target){
       }
     }
 }
+// $('button').click(function(){
+//   $(this).animate({
+//     'margin-left':'100%',
+//     'opacity':'0',
+//   },1500)
+// })
 
 renderShapes( generateRandomNum(2,20) , "picked");
 renderShapes( generateRandomNum(20,20) , "field");

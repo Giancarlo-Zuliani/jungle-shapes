@@ -16,7 +16,12 @@ body{
   background-size: cover;
 }
 
-
+button{
+  margin:180px auto;
+  width:40%;
+  height:150px;
+  background-color: crimson;
+}
 header{
   width:100%;
   margin:20px auto;
