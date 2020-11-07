@@ -40,24 +40,7 @@ for(i=0;i<pickedShape.length;i++){
   targetShape.push(ur);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- $('section img').click(function(){
-   let n = this.src;
-    targetShape.includes(n) ? console.log('hahi vinto') : console.log('perso')
- })
+$('section img').click(function(){
+  let n = this.src;
+  targetShape.includes(n) ? console.log('hahi vinto') : console.log('perso')
+})
