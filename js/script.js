@@ -15,6 +15,9 @@ $('#level1').click(function(){
 })
 
 function animateBanner(){
+  $('.banner').html('')
+  $('.banner').show();
+  $('.banner').css('opacity', '0.5').css('width' , '100px').css( 'height' , '70px');
   setTimeout(()=>{
   let banner = $('<h3> Level 1/3  </h3>  <button onclick="levelstart()" id ="levelstart">GO!</button>');
   $('.banner').append(banner);
@@ -30,6 +33,12 @@ function levelstart(){
   $('.banner').hide(600);
   renderShapes( generateRandomNum(2,20) , "picked");
   renderShapes( generateRandomNum(20,20) , "field");
+  $('header img').fadeOut(1000,function(){
+    $('section').fadeIn(1000,function(){
+      $('section').fadeOut(1000)
+    });
+  });
+
 }
 
 function generateRandomNum(length,maxNum){
@@ -63,11 +72,6 @@ function renderShapes(arr,target){
 // renderShapes( generateRandomNum(2,20) , "picked");
 // renderShapes( generateRandomNum(20,20) , "field");
 
-// $('header').fadeOut(10000,function(){
-//     $('section').fadeIn(5000,function(){
-//       $('section').fadeOut(20000)
-//     });
-// });
 
 var pickedShape=$('header img');
 var targetShape=[];
