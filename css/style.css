@@ -91,9 +91,9 @@ button:hover{
 
 h2{
   text-align: center;
-  line-height: 50%;
   font-size: 80px;
 }
+
 .disabled{
   filter:brightness(25%);
 }
@@ -144,14 +144,30 @@ footer{
   position:absolute;
   bottom:0;
   right:0;
-  height: 50px;
+  height: 70px;
   background-color: rgba(130,238,80,.5);
   width:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer div {
+  display: flex;
+  align-items:center;
 }
 
-#points h2{
+footer div h2{
   font-size: 35px;
   text-align: left;
+}
+
+footer div img{
+  width:60px;
+  height:60px;
+}
+
+#points img{
+  margin-bottom:20px;
 }
 
 @media screen and (max-width:1240px){
