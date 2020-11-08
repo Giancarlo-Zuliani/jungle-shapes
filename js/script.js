@@ -1,5 +1,4 @@
 
-
 $('main button').click(function(){
   for(i=0; i< $('main button').length ; i++){
     $('main button')[i].animate({
@@ -10,24 +9,29 @@ $('main button').click(function(){
   $('main').fadeOut(900);
 })
 
+
 $('#level1').click(function(){
   animateBanner()
 })
 
 function animateBanner(){
   setTimeout(()=>{
-  let banner = $('<h2>  <h2>').attr('class','levelbanner');
+  let banner = $('<h3> Level 1/3  </h3>  <button onclick="levelstart()" id ="levelstart">GO!</button>');
   $('.banner').append(banner);
-  $('.levelbanner').animate({
+  $('.banner').animate({
     'width':'570px',
-    'height' : '400px',
-  },300,() => {
-    setTimeout(() =>{
-      $('.levelbanner').hide()
-    },1500);
-  })
+    'height':'400px',
+    'opacity' : '1',
+  },300,)
 },500)
 }
+
+function levelstart(){
+  $('.banner').hide(600);
+  renderShapes( generateRandomNum(2,20) , "picked");
+  renderShapes( generateRandomNum(20,20) , "field");
+}
+
 function generateRandomNum(length,maxNum){
   var arr = [];
   for(i=0;i < length ; i++){

@@ -41,7 +41,7 @@ main{
 button{
   margin:10px 25%;
   width:50%;
-  height:75px;
+  height:50px;
   background-image: url('../resources/junglebtn.jpg');
   background-position:center;
   background-size: cover;
@@ -54,7 +54,8 @@ button{
   color:black;
   transition: transform linear .2s
 }
-.levelbanner{
+
+.banner{
   width:100px;
   height: 70px;
   text-align: center;
@@ -66,11 +67,28 @@ button{
   background-size:cover;
   background-repeat: no-repeat;
   background-position:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity:0;
 }
+
 button:hover{
   cursor:pointer;
   transform:scale(1.2);
 }
+
+.banner h3{
+  text-align: center;
+  font-size: 40px;
+}
+
+.banner button{
+  width:50%;
+  height:10%;
+}
+
 h2{
   text-align: center;
   line-height: 50%;
@@ -126,9 +144,14 @@ footer{
   position:absolute;
   bottom:0;
   right:0;
-  height: 100px;
-  background-color: blue;
+  height: 50px;
+  background-color: rgba(130,238,80,.5);
   width:100%;
+}
+
+#points h2{
+  font-size: 35px;
+  text-align: left;
 }
 
 @media screen and (max-width:1240px){
