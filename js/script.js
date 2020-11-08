@@ -1,4 +1,12 @@
 
+var user = {
+  monkeyPoints : 0,
+  elephPoints : 5,
+}
+
+$('#monkey').html(user.monkeyPoints);
+$('#eleph').html(user.elephPoints);
+
 $('main button').click(function(){
   for(i=0; i< $('main button').length ; i++){
     $('main button')[i].animate({
@@ -15,18 +23,17 @@ $('#level1').click(function(){
 })
 
 function animateBanner(){
-  $('.banner').html('')
-  $('.banner').show();
-  $('.banner').css('opacity', '0.5').css('width' , '100px').css( 'height' , '70px');
-  setTimeout(()=>{
+  $('.banner').empty()
+  $('.banner').css('opacity', '0').css('width' , '100px').css( 'height' , '70px');
+  $('.banner').show(200);
   let banner = $('<h3> Level 1/3  </h3>  <button onclick="levelstart()" id ="levelstart">GO!</button>');
   $('.banner').append(banner);
   $('.banner').animate({
-    'width':'570px',
+    'width':'590px',
     'height':'400px',
     'opacity' : '1',
-  },300,)
-},500)
+  },700,)
+
 }
 
 function levelstart(){
@@ -35,7 +42,9 @@ function levelstart(){
   renderShapes( generateRandomNum(20,20) , "field");
   $('header img').fadeOut(1000,function(){
     $('section').fadeIn(1000,function(){
-      $('section').fadeOut(1000)
+      $('section').fadeOut(1000,()=>{
+        animateBanner();
+      })
     });
   });
 
