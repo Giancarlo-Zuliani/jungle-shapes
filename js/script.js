@@ -4,7 +4,6 @@ var user = {
   elephPoints : 5,
 }
 
-// $('header').hide();
 $('section').hide();
 
 $('#monkey').html(user.monkeyPoints);
@@ -62,11 +61,11 @@ function levelstart(n){
   switch(n){
     case 1 :
     renderShapes( generateRandomNum(20,20) , "field");
-    renderShapes( generateRandomNum(2,20) , "picked");
+    renderShapes( generateRandomNum(3,20) , "picked");
     break;
     case 2 :
     renderShapes( generateRandomNum(30,30) , "field");
-    renderShapes( generateRandomNum(3,30) , "picked");
+    renderShapes( generateRandomNum(4,30) , "picked");
     break;
     case 3 :
     renderShapes( generateRandomNum(30,30) , "field");
@@ -107,7 +106,7 @@ function generateRandomNum(length,maxNum){
   return arr
 };
 
-var pickedShape
+var pickedShape;
 var targetShape=[];
 
 function renderShapes(arr,target){
@@ -145,12 +144,47 @@ function rightShape(shape){
 }
 
 function wrongShape(shape){
-
 $(shape).attr('src', "resources/elephface.png")
 $(shape).unbind('click')
 user.elephPoints-=1;
 $('#eleph').html(user.elephPoints);
-if(user.elephPoints === 0){
-  alert('u luse')
+  if(user.elephPoints === 0){
+    alert('u luse')
+  }
 }
+
+
+function checkMonkey(){
+  var btn = $('main button')
+  if(user.monkeyPoints > 23){
+    for(i = 0 ; i < btn.length;i++){
+      btn.eq(i).attr('disabled' , false).removeClass('disabled');
+      btn.eq(i).children('span').html('');
+    }
+  }else if (user.monkeyPoints > 18 && user.monkeyPoints < 23){
+    for(i=0;i< (btn.length -1);i++){
+      btn.eq(i).attr('disabled' , false).removeClass('disabled');
+      btn.eq(i).children('span').html('');
+    }
+  }else if(user.monkeyPoints < 23 && user.monkeyPoints > 13){
+    for(i=0;i< (btn.length -2);i++){
+      btn.eq(i).attr('disabled' , false).removeClass('disabled');
+      btn.eq(i).children('span').html('');
+    }
+  }else if(user.monkeyPoints < 13 && user.monkeyPoints > 9){
+    for(i=0;i< (btn.length -3);i++){
+      btn.eq(i).attr('disabled' , false).removeClass('disabled');
+      btn.eq(i).children('span').html('');
+    }
+  }else if(user.monkeyPoints < 9 && user.monkeyPoints > 6){
+    for(i=0;i< (btn.length -4);i++){
+      btn.eq(i).attr('disabled' , false).removeClass('disabled');
+      btn.eq(i).children('span').html('');
+    }
+  }else if (user.monkeyPoints < 6 && user.monkeyPoints > 2){
+    for(i=0;i< (btn.length -5);i++){
+      btn.eq(i).attr('disabled' , false).removeClass('disabled');
+      btn.eq(i).children('span').html('');
+    }
+  }
 }
