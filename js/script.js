@@ -4,6 +4,10 @@ var user = {
   elephPoints : 5,
 }
 
+var timewidth = 100;
+var timer;
+var stp = 0;
+
 $('section').hide();
 
 $('#monkey').html(user.monkeyPoints);
@@ -93,7 +97,8 @@ function levelstart(n){
     $('header img').fadeOut()
     $('section').fadeIn()
   },5000)
-}
+  setTimeout(timebar , 6000);
+};
 
 function generateRandomNum(length,maxNum){
   var arr = [];
@@ -158,12 +163,19 @@ function leveldoneBanner(cond){
   $('.banner').empty()
   $('.banner').css('opacity', '0').css('width' , '100px').css( 'height' , '70px');
   $('.banner').show(100);
-  var banner
+  timewidth = 100;
+  stp = 0;
+  var banner;
   if(cond === "win"){
+    $('#container').hide();
+    clearInterval(timer);
      banner = $('<h3> LEVEL COMPLETE </h3>  <button onclick="showMainMenu()" >BACK!</button>');
   }else if(cond === "endtime"){
+    $('#container').hide();
      banner = $("<h3> TIME'S UP</h3>  <button onclick='showMainMenu()'>BACK!</button>");
   }else if(cond === "fail"){
+    clearInterval(timer)
+    $('#container').hide();
      banner = $('<h3> YOU FAIL! </h3>  <button onclick="showMainMenu()" >BACK!</button>');
   };
   $('header').hide();
@@ -217,3 +229,27 @@ function checkMonkey(){
     }
   }
 }
+
+
+// timebar
+$('#container').hide();
+var bar = document.getElementById('timebar');
+
+
+
+
+function timebar(){
+$('#container').show();
+  if(stp == 0){
+    timer = setInterval(timebar , 1)
+    stp = 1
+    timewidth=100;
+  }
+  timewidth -= .1
+  if(timewidth <= 0){
+    clearInterval(timer);
+    leveldoneBanner('endtime');
+  }
+    $('#timebar').width(timewidth + '%');
+    $('#timebar').html(timewidth.toFixed(0) + '%')
+};
