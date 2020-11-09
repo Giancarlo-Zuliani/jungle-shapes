@@ -52,7 +52,8 @@ button{
   border-radius: 30px;
   font-size: 40px;
   color:black;
-  transition: transform linear .2s
+  transition: transform linear .2s;
+  z-index:99;
 }
 
 .banner{
@@ -82,6 +83,7 @@ button:hover{
 .banner h3{
   text-align: center;
   font-size: 40px;
+  z-index: 0;
 }
 
 .banner button{

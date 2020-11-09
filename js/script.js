@@ -47,7 +47,7 @@ function animateBanner(n){
   $('.banner').empty()
   $('.banner').css('opacity', '0').css('width' , '100px').css( 'height' , '70px');
   $('.banner').show(100);
-  let banner = $('<h3> Level'+ n + '</h3>  <button onclick="levelstart(' + n +')" id ="levelstart">GO!</button> <h3>find the shapes!</h3>');
+  let banner = $('<h3> Level '+ n + '</h3>  <button onclick="levelstart(' + n +')" id ="levelstart">GO!</button> <h3>find the shapes!</h3>');
   $('.banner').append(banner);
   $('.banner').animate({
     'width':'590px',
@@ -88,13 +88,11 @@ function levelstart(n){
     renderShapes( generateRandomNum(6,70) , "picked");
     break;
   }
-  $('header img').fadeOut(10000,()=>{
-    $('section').fadeIn(()=>{
-      $('section').fadeOut(100000,()=>{
-        $('main').show()
-      })
-    })
-  })
+  $('header').fadeIn(500)
+  setTimeout(function(){
+    $('header img').fadeOut()
+    $('section').fadeIn()
+  },5000)
 }
 
 function generateRandomNum(length,maxNum){
@@ -140,6 +138,9 @@ function rightShape(shape){
   $(shape).attr('src', "resources/monkeyface.svg")
   $(shape).unbind('click')
     user.monkeyPoints += 1;
+    if(user.monkeyPoints == targetShape.length){
+      leveldoneBanner('win')
+    }
   $('#monkey').html(user.monkeyPoints);
 }
 
@@ -149,39 +150,67 @@ $(shape).unbind('click')
 user.elephPoints-=1;
 $('#eleph').html(user.elephPoints);
   if(user.elephPoints === 0){
-    alert('u luse')
+    leveldoneBanner('fail')
   }
 }
 
+function leveldoneBanner(cond){
+  $('.banner').empty()
+  $('.banner').css('opacity', '0').css('width' , '100px').css( 'height' , '70px');
+  $('.banner').show(100);
+  var banner
+  if(cond === "win"){
+     banner = $('<h3> LEVEL COMPLETE </h3>  <button onclick="showMainMenu()" >BACK!</button>');
+  }else if(cond === "endtime"){
+     banner = $("<h3> TIME'S UP</h3>  <button onclick='showMainMenu()'>BACK!</button>");
+  }else if(cond === "fail"){
+     banner = $('<h3> YOU FAIL! </h3>  <button onclick="showMainMenu()" >BACK!</button>');
+  };
+  $('header').hide();
+  $('section').hide();
+  $('.banner').append(banner);
+  $('.banner').animate({
+    'width':'590px',
+    'height':'400px',
+    'opacity' : '1',
+  },700,)
+}
+
+function showMainMenu(){
+  $('main').show();
+  $('banner').empty()
+  $('.banner').css('opacity', '0').css('width' , '100px').css( 'height' , '70px');
+  checkMonkey()
+}
 
 function checkMonkey(){
   var btn = $('main button')
-  if(user.monkeyPoints > 23){
+  if(user.monkeyPoints >= 23){
     for(i = 0 ; i < btn.length;i++){
       btn.eq(i).attr('disabled' , false).removeClass('disabled');
       btn.eq(i).children('span').html('');
     }
-  }else if (user.monkeyPoints > 18 && user.monkeyPoints < 23){
+  }else if (user.monkeyPoints >= 18 && user.monkeyPoints < 23){
     for(i=0;i< (btn.length -1);i++){
       btn.eq(i).attr('disabled' , false).removeClass('disabled');
       btn.eq(i).children('span').html('');
     }
-  }else if(user.monkeyPoints < 23 && user.monkeyPoints > 13){
+  }else if(user.monkeyPoints < 23 && user.monkeyPoints >= 13){
     for(i=0;i< (btn.length -2);i++){
       btn.eq(i).attr('disabled' , false).removeClass('disabled');
       btn.eq(i).children('span').html('');
     }
-  }else if(user.monkeyPoints < 13 && user.monkeyPoints > 9){
+  }else if(user.monkeyPoints < 13 && user.monkeyPoints >= 9){
     for(i=0;i< (btn.length -3);i++){
       btn.eq(i).attr('disabled' , false).removeClass('disabled');
       btn.eq(i).children('span').html('');
     }
-  }else if(user.monkeyPoints < 9 && user.monkeyPoints > 6){
+  }else if(user.monkeyPoints < 9 && user.monkeyPoints >= 6){
     for(i=0;i< (btn.length -4);i++){
       btn.eq(i).attr('disabled' , false).removeClass('disabled');
       btn.eq(i).children('span').html('');
     }
-  }else if (user.monkeyPoints < 6 && user.monkeyPoints > 2){
+  }else if (user.monkeyPoints < 6 && user.monkeyPoints >= 2){
     for(i=0;i< (btn.length -5);i++){
       btn.eq(i).attr('disabled' , false).removeClass('disabled');
       btn.eq(i).children('span').html('');
