@@ -1,30 +1,24 @@
-
+//USER VARIABLES
 var user = {
   monkeyPoints : 0,
   elephPoints : 5,
   levelPoints : 0
 }
 
+//SHAPES VARIABLES
+var pickedShape;
+var targetShape=[];
+
+//TIME VARIABLES
 var timewidth = 100;
 var timer;
 var stp = 0;
 
 $('section').hide();
-
 $('#monkey').html(user.monkeyPoints);
 $('#eleph').html(user.elephPoints);
 
-$('main button').click(function(){
-  for(i=0; i< $('main button').length ; i++){
-    $('main button')[i].animate({
-      'right':'800px',
-      'opacity':'0',
-    },(i+1)*700)
-  }
-  $('main').fadeOut(900);
-})
-
-
+//LEVELS TRIGGERS
 $('#level1').click(function(){
   animateBanner(1)
 })
@@ -47,7 +41,18 @@ $('#level7').click(function(){
   animateBanner(7)
 })
 
+//MAIN MENU BUTTON ANIMATION
+$('main button').click(function(){
+  for(i=0; i< $('main button').length ; i++){
+    $('main button')[i].animate({
+      'right':'800px',
+      'opacity':'0',
+    },(i+1)*700)
+  }
+  $('main').fadeOut(900);
+})
 
+//POP UP BANNER ON STARTING LEVEL
 function animateBanner(n){
   $('.banner').empty()
   $('.banner').css('opacity', '0').css('width' , '100px').css( 'height' , '70px');
@@ -61,6 +66,45 @@ function animateBanner(n){
   },700,)
 }
 
+//GENERATE RANDOM NUMS FOR CPU PICK SHAPES AND SHAPES RENDER RETURN AN ARRAY
+function generateRandomNum(length,maxNum){
+  var arr = [];
+  for(i=0;i < length ; i++){
+    let n = Math.floor(Math.random()* maxNum ) + 1;
+    arr.includes(n) ? i-- : arr.push(n);
+  }
+  return arr
+};
+
+//FUNCTION FOR RENDER SHAPES ON PAGE
+function renderShapes(arr,target){
+  if(target === "field"){
+    $('section').empty();
+    for(i=0; i < arr.length ;i++){
+      let img = $('<img></img>').attr('src','obj/shape' + arr[i] +'.png');
+      $('section').append(img);
+    }
+    $('section img').click(function(){
+      let n = this.src;
+      console.log(this.src)
+      targetShape.includes(n) ? rightShape(this) : wrongShape(this);
+    })
+  }else if(target === "picked"){
+    targetShape =[];
+    $('header').empty();
+    for(i=0; i < arr.length;i++){
+      let img = $('<img></img>').attr('src','obj/shape' + arr[i] +'.png');
+      $('header').append(img);
+    }
+    pickedShape = $('header img')
+    for(i=0; i<pickedShape.length ; i++){
+      let ur = pickedShape[i].src
+      targetShape.push(ur);
+    }
+  }
+}
+
+//LEVELS GENERATORS
 function levelstart(n){
   $('.banner').hide(300);
   switch(n){
@@ -101,45 +145,7 @@ function levelstart(n){
   setTimeout(timebar , 6000);
 };
 
-function generateRandomNum(length,maxNum){
-  var arr = [];
-  for(i=0;i < length ; i++){
-  let n = Math.floor(Math.random()* maxNum ) + 1;
-  arr.includes(n) ? i-- : arr.push(n);
-  }
-  return arr
-};
-
-var pickedShape;
-var targetShape=[];
-
-function renderShapes(arr,target){
-  if(target === "field"){
-    $('section').empty();
-    for(i=0; i < arr.length ;i++){
-      let img = $('<img></img>').attr('src','obj/shape' + arr[i] +'.png');
-      $('section').append(img);
-    }
-    $('section img').click(function(){
-      let n = this.src;
-      console.log(this.src)
-      targetShape.includes(n) ? rightShape(this) : wrongShape(this);
-    })
-  }else if(target === "picked"){
-    targetShape =[];
-    $('header').empty();
-    for(i=0; i < arr.length;i++){
-      let img = $('<img></img>').attr('src','obj/shape' + arr[i] +'.png');
-      $('header').append(img);
-    }
-    pickedShape = $('header img')
-    for(i=0; i<pickedShape.length ; i++){
-      let ur = pickedShape[i].src
-      targetShape.push(ur);
-    }
-  }
-}
-
+//FUNCTION ON CLICKED DOWN THE RIGHT SHAPE
 function rightShape(shape){
   $(shape).attr('src', "resources/monkeyface.svg")
   $(shape).unbind('click')
@@ -151,6 +157,7 @@ function rightShape(shape){
   $('#monkey').html(user.monkeyPoints);
 }
 
+//FUNCTION ON CLICKED DOWN THE WRONG SHAPE
 function wrongShape(shape){
 $(shape).attr('src', "resources/elephface.png")
 $(shape).unbind('click')
@@ -161,6 +168,7 @@ $('#eleph').html(user.elephPoints);
   }
 }
 
+//POP UP ON WIN,LOSE OR TIME'S UP
 function leveldoneBanner(cond){
   $('.banner').empty()
   $('.banner').css('opacity', '0').css('width' , '100px').css( 'height' , '70px');
@@ -193,6 +201,7 @@ function leveldoneBanner(cond){
   },700,)
 }
 
+//FUNCTION FOR RETURN ON MAIN MENU
 function showMainMenu(){
   $('main').show();
   $('banner').empty()
@@ -200,6 +209,7 @@ function showMainMenu(){
   checkMonkey()
 }
 
+//CHECK MONKEYS NUM FOR UNLOCK FURTHER LEVELS
 function checkMonkey(){
   var btn = $('main button')
   if(user.monkeyPoints >= 23){
@@ -235,16 +245,11 @@ function checkMonkey(){
   }
 }
 
-
-// timebar
+// TIMEBAR
 $('#container').hide();
 var bar = document.getElementById('timebar');
-
-
-
-
 function timebar(){
-$('#container').show();
+  $('#container').show();
   if(stp == 0){
     timer = setInterval(timebar , 2)
     stp = 1
@@ -255,6 +260,6 @@ $('#container').show();
     clearInterval(timer);
     leveldoneBanner('endtime');
   }
-    $('#timebar').width(timewidth + '%');
-    $('#timebar').html(timewidth.toFixed(0) + '%')
+  $('#timebar').width(timewidth + '%');
+  $('#timebar').html(timewidth.toFixed(0) + '%')
 };

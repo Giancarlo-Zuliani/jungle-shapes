@@ -11,7 +11,6 @@
   cursor:url(../resources/cursor/banana.cur),pointer;
 }
 
-
 #title{
   font-size: 80px;
   width:100%;
@@ -124,6 +123,7 @@ header{
   height:150px;
   margin: auto;
 }
+
 section{
   width:75%;
   margin: auto;
@@ -132,10 +132,10 @@ section{
   align-items: center;
   flex-wrap: wrap;
 }
-section img{
-  width:10%;
-}
 
+section img{
+  width:5%;
+}
 
 img:hover{
   transform:scale(1.6);
@@ -152,6 +152,7 @@ footer{
   justify-content: space-between;
   align-items: center;
 }
+
 footer div {
   display: flex;
   align-items:center;
