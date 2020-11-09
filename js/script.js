@@ -4,6 +4,9 @@ var user = {
   elephPoints : 5,
 }
 
+// $('header').hide();
+$('section').hide();
+
 $('#monkey').html(user.monkeyPoints);
 $('#eleph').html(user.elephPoints);
 
@@ -25,7 +28,7 @@ $('#level1').click(function(){
 function animateBanner(){
   $('.banner').empty()
   $('.banner').css('opacity', '0').css('width' , '100px').css( 'height' , '70px');
-  $('.banner').show(200);
+  $('.banner').show(100);
   let banner = $('<h3> Level 1/3  </h3>  <button onclick="levelstart()" id ="levelstart">GO!</button>');
   $('.banner').append(banner);
   $('.banner').animate({
@@ -37,17 +40,16 @@ function animateBanner(){
 }
 
 function levelstart(){
-  $('.banner').hide(600);
+  $('.banner').hide(300);
   renderShapes( generateRandomNum(2,20) , "picked");
   renderShapes( generateRandomNum(20,20) , "field");
-  $('header img').fadeOut(1000,function(){
-    $('section').fadeIn(1000,function(){
-      $('section').fadeOut(1000,()=>{
+  $('header img').fadeOut(10000,function(){
+    $('section').fadeIn(10000,function(){
+      $('section').fadeOut(10000,()=>{
         animateBanner();
       })
-    });
-  });
-
+    })
+  })
 }
 
 function generateRandomNum(length,maxNum){
@@ -59,47 +61,47 @@ function generateRandomNum(length,maxNum){
   return arr
 };
 
+var pickedShape
+var targetShape=[];
 
 function renderShapes(arr,target){
   if(target === "field"){
+    $('section').empty();
     for(i=0; i < arr.length ;i++){
       let img = $('<img></img>').attr('src','obj/shape' + arr[i] +'.png');
       $('section').append(img);
     }
+    $('section img').click(function(){
+      let n = this.src;
+      console.log(this.src)
+      targetShape.includes(n) ? rightShape(this) : wrongShape(this);
+    })
   }else if(target === "picked"){
-      for(i=0; i < arr.length;i++){
-        let img = $('<img></img>').attr('src','obj/shape' + arr[i] +'.png');
-        $('header').append(img);
-      }
+    targetShape =[];
+    $('header').empty();
+    for(i=0; i < arr.length;i++){
+      let img = $('<img></img>').attr('src','obj/shape' + arr[i] +'.png');
+      $('header').append(img);
     }
-}
-
-
-
-
-
-// renderShapes( generateRandomNum(2,20) , "picked");
-// renderShapes( generateRandomNum(20,20) , "field");
-
-
-var pickedShape=$('header img');
-var targetShape=[];
-
-for(i=0;i<pickedShape.length;i++){
-  let ur = pickedShape[i].src
-  targetShape.push(ur);
+    pickedShape = $('header img')
+    for(i=0; i<pickedShape.length ; i++){
+      let ur = pickedShape[i].src
+      targetShape.push(ur);
+    }
+  }
 }
 
 function rightShape(shape){
-$(shape).fadeOut(300);
+  $(shape).attr('src', "resources/monkeyface.svg")
+  user.monkeyPoints += 1;
+  $('#monkey').html(user.monkeyPoints);
 }
 
-
-function wrongShape(){
-
+function wrongShape(shape){
+$(shape).attr('src', "resources/elephface.png")
+user.elephPoints-=1;
+$('#eleph').html(user.elephPoints);
+if(user.elephPoints === 0){
+  alert('u luse')
 }
-
-$('section img').click(function(){
-  let n = this.src;
-  targetShape.includes(n) ? rightShape(this) : wrongShape(this);
-})
+}
