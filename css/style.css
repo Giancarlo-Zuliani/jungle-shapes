@@ -125,7 +125,7 @@ header{
 }
 
 section{
-  width:75%;
+  width:80%;
   margin: auto;
   display:flex;
   justify-content: space-around;
@@ -134,7 +134,7 @@ section{
 }
 
 section img{
-  width:5%;
+  width:6.5%;
 }
 
 img:hover{
