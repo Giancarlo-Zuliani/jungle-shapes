@@ -251,11 +251,11 @@ var bar = document.getElementById('timebar');
 function timebar(){
   $('#container').show();
   if(stp == 0){
-    timer = setInterval(timebar , 2)
+    timer = setInterval(timebar , 4)
     stp = 1
     timewidth=100;
   }
-  timewidth -= .1
+  timewidth -= .05
   if(timewidth <= 0){
     clearInterval(timer);
     leveldoneBanner('endtime');
