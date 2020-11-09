@@ -44,8 +44,8 @@ function levelstart(){
   renderShapes( generateRandomNum(2,20) , "picked");
   renderShapes( generateRandomNum(20,20) , "field");
   $('header img').fadeOut(10000,function(){
-    $('section').fadeIn(10000,function(){
-      $('section').fadeOut(10000,()=>{
+    $('section').fadeIn(100000,function(){
+      $('section').fadeOut(100000,()=>{
         animateBanner();
       })
     })
@@ -93,12 +93,15 @@ function renderShapes(arr,target){
 
 function rightShape(shape){
   $(shape).attr('src', "resources/monkeyface.svg")
-  user.monkeyPoints += 1;
+  $(shape).unbind('click')
+    user.monkeyPoints += 1;
   $('#monkey').html(user.monkeyPoints);
 }
 
 function wrongShape(shape){
+
 $(shape).attr('src', "resources/elephface.png")
+$(shape).unbind('click')
 user.elephPoints-=1;
 $('#eleph').html(user.elephPoints);
 if(user.elephPoints === 0){
