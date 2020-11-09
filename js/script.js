@@ -43,11 +43,11 @@ $('#level7').click(function(){
 
 //MAIN MENU BUTTON ANIMATION
 $('main button').click(function(){
-  for(i=0; i< $('main button').length ; i++){
-    $('main button')[i].animate({
+  for(i=1; i <= $('main button').length ; i++){
+    $('main button')[i-1].animate({
       'right':'800px',
       'opacity':'0',
-    },(i+1)*700)
+    },i*700)
   }
   $('main').fadeOut(900);
 })
@@ -56,14 +56,14 @@ $('main button').click(function(){
 function animateBanner(n){
   $('.banner').empty()
   $('.banner').css('opacity', '0').css('width' , '100px').css( 'height' , '70px');
-  $('.banner').show(100);
+  $('.banner').show(200);
   let banner = $('<h3> Level '+ n + '</h3>  <button onclick="levelstart(' + n +')" id ="levelstart">GO!</button> <h3>find the shapes!</h3>');
   $('.banner').append(banner);
   $('.banner').animate({
     'width':'590px',
     'height':'400px',
     'opacity' : '1',
-  },700,)
+  },300,)
 }
 
 //GENERATE RANDOM NUMS FOR CPU PICK SHAPES AND SHAPES RENDER RETURN AN ARRAY
@@ -191,6 +191,8 @@ function leveldoneBanner(cond){
     $('#container').hide();
      banner = $('<h3> YOU FAIL! </h3>  <button onclick="showMainMenu()" >BACK!</button>');
   };
+  setTimeout(function(){
+
   $('header').hide();
   $('section').hide();
   $('.banner').append(banner);
@@ -198,7 +200,8 @@ function leveldoneBanner(cond){
     'width':'590px',
     'height':'400px',
     'opacity' : '1',
-  },700,)
+  },300,)
+},500)
 }
 
 //FUNCTION FOR RETURN ON MAIN MENU
