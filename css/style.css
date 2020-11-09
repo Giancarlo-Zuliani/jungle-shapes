@@ -8,6 +8,7 @@
   margin:0;
   padding:0;
   font-family: 'fan',sans-serif;
+  cursor:url(../resources/cursor/banana.cur),pointer;
 }
 
 
@@ -20,8 +21,8 @@
 }
 
 img{
-  width:15%;
-  padding: 10px;
+  width:10%;
+  padding: 5px;
   transition: transform linear .2s;
 }
 
@@ -76,7 +77,6 @@ button{
 }
 
 button:hover{
-  cursor:pointer;
   transform:scale(1.2);
 }
 
@@ -102,7 +102,7 @@ h2{
 
 button span{
   position: absolute;
-  bottom:5px;
+  bottom:1px;
   left:50%;
   font-size: 9px;
   font-weight: bolder;
@@ -111,7 +111,7 @@ button span{
 }
 
 header{
-  width:100%;
+  width:80%;
   margin:20px auto;
   display: flex;
   justify-content: space-around;
@@ -139,7 +139,6 @@ section img{
 
 img:hover{
   transform:scale(1.6);
-  cursor:pointer;
 }
 
 footer{
@@ -193,7 +192,7 @@ footer div img{
 }
 
 @media screen and (max-width:1240px){
-  img{
+  section img{
     width:10%;
   }
   body{

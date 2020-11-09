@@ -2,6 +2,7 @@
 var user = {
   monkeyPoints : 0,
   elephPoints : 5,
+  levelPoints : 0
 }
 
 var timewidth = 100;
@@ -36,7 +37,7 @@ $('#level3').click(function(){
 $('#level4').click(function(){
   animateBanner(4)
 })
-$('#level15').click(function(){
+$('#level5').click(function(){
   animateBanner(5)
 })
 $('#level6').click(function(){
@@ -72,8 +73,8 @@ function levelstart(n){
     renderShapes( generateRandomNum(4,30) , "picked");
     break;
     case 3 :
-    renderShapes( generateRandomNum(30,30) , "field");
-    renderShapes( generateRandomNum(4,30) , "picked");
+    renderShapes( generateRandomNum(40,40) , "field");
+    renderShapes( generateRandomNum(4,40) , "picked");
     break;
     case 4 :
     renderShapes( generateRandomNum(40,40) , "field");
@@ -143,8 +144,9 @@ function rightShape(shape){
   $(shape).attr('src', "resources/monkeyface.svg")
   $(shape).unbind('click')
     user.monkeyPoints += 1;
-    if(user.monkeyPoints == targetShape.length){
-      leveldoneBanner('win')
+    user.levelPoints += 1;
+    if(user.levelPoints === targetShape.length){
+      leveldoneBanner('win');
     }
   $('#monkey').html(user.monkeyPoints);
 }
@@ -163,6 +165,9 @@ function leveldoneBanner(cond){
   $('.banner').empty()
   $('.banner').css('opacity', '0').css('width' , '100px').css( 'height' , '70px');
   $('.banner').show(100);
+  user.levelPoints = 0;
+  user.elephPoints+=5;
+  $('#eleph').html(user.elephPoints);
   timewidth = 100;
   stp = 0;
   var banner;
@@ -241,7 +246,7 @@ var bar = document.getElementById('timebar');
 function timebar(){
 $('#container').show();
   if(stp == 0){
-    timer = setInterval(timebar , 1)
+    timer = setInterval(timebar , 2)
     stp = 1
     timewidth=100;
   }
