@@ -30,8 +30,8 @@ var tick =new Audio ('resources/audio/ticktick.mp3');
 tick.volume = 0.2;
 var alarm = new Audio ('resources/audio/alarm.mp3');
 alarm.volume=0.2;
-
-
+var discoverSound = new Audio ('resources/audio/positive.mp3');
+discoverSound.volume = 0.4;
 
 $('section').hide();
 $('#monkey').html(user.monkeyPoints);
@@ -169,6 +169,7 @@ function levelstart(n){
 
 //FUNCTION ON CLICKED DOWN THE RIGHT SHAPE
 function rightShape(shape){
+  discoverSound.play();
   $(shape).attr('src', "resources/monkeyface.svg")
   $(shape).unbind('click')
     user.monkeyPoints += 1;
