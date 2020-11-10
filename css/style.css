@@ -191,6 +191,12 @@ footer div img{
   color: black;
   border-radius: 15px;
 }
+#soundPlayer{
+  height:50%;
+  font-size: 20px;
+  width:200px;
+  padding:5px;
+}
 
 @media screen and (max-width:1240px){
   section img{

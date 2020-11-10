@@ -15,13 +15,21 @@ var timer;
 var stp = 0;
 
 //SOUND
-var soundtrack = new Audio ('resources/audio/soundtrack.mp3');
+var soundtrack = new Audio ('resources/audio/maintheme.mp3');
 soundtrack.volume = 0.05;
 soundtrack.loop = true;
 var elphSound = new Audio ('resources/audio/eleph.mp3');
 elphSound.volume = 0.1;
 var introSound = new Audio ('resources/audio/entersfx.mp3');
 introSound.volume = 0.2;
+var loseSound = new Audio ('resources/audio/lose.mp3');
+loseSound.volume = 0.2;
+var winSound = new Audio ('resources/audio/complete.mp3');
+winSound.volulme = 0.2;
+var tick =new Audio ('resources/audio/ticktick.mp3');
+tick.volume = 0.2;
+var alarm = new Audio ('resources/audio/alarm.mp3');
+alarm.volume=0.2;
 
 
 
@@ -189,21 +197,24 @@ function leveldoneBanner(cond){
   $('.banner').css('opacity', '0').css('width' , '100px').css( 'height' , '70px');
   $('.banner').show(100);
   user.levelPoints = 0;
-  user.elephPoints+=5;
+  user.elephPoints = 5;
   $('#eleph').html(user.elephPoints);
   timewidth = 100;
   stp = 0;
   var banner;
   if(cond === "win"){
+    winSound.play();
     $('#container').hide();
     clearInterval(timer);
      banner = $('<h3> LEVEL COMPLETE </h3>  <button onclick="showMainMenu()" >BACK!</button>');
   }else if(cond === "endtime"){
     $('#container').hide();
+    alarm.play();
      banner = $("<h3> TIME'S UP</h3>  <button onclick='showMainMenu()'>BACK!</button>");
   }else if(cond === "fail"){
-    clearInterval(timer)
+    loseSound.play();
     $('#container').hide();
+    clearInterval(timer)
      banner = $('<h3> YOU FAIL! </h3>  <button onclick="showMainMenu()" >BACK!</button>');
   };
   setTimeout(function(){
@@ -263,6 +274,18 @@ function checkMonkey(){
   }
 }
 
+var soundSwitch = false;
+
+$('#soundPlayer').click(() =>{
+  if(soundSwitch){
+    soundtrack.pause();
+    soundSwitch = false;
+  }else{
+    soundtrack.play();
+    soundSwitch = true;
+  }
+})
+
 // TIMEBAR
 $('#container').hide();
 var bar = document.getElementById('timebar');
@@ -274,6 +297,9 @@ function timebar(){
     timewidth=100;
   }
   timewidth -= .05
+  if(timewidth <= 20){
+    tick.play();
+  }
   if(timewidth <= 0){
     clearInterval(timer);
     leveldoneBanner('endtime');
