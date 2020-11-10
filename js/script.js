@@ -132,31 +132,31 @@ function levelstart(n){
   switch(n){
     case 1 :
     renderShapes( generateRandomNum(20,20) , "field");
-    renderShapes( generateRandomNum(3,20) , "picked");
+    renderShapes( generateRandomNum(2,20) , "picked");
     break;
     case 2 :
+    renderShapes( generateRandomNum(20,20) , "field");
+    renderShapes( generateRandomNum(3,20) , "picked");
+    break;
+    case 3 :
+    renderShapes( generateRandomNum(30,30) , "field");
+    renderShapes( generateRandomNum(3,30) , "picked");
+    break;
+    case 4 :
     renderShapes( generateRandomNum(30,30) , "field");
     renderShapes( generateRandomNum(4,30) , "picked");
     break;
-    case 3 :
+    case 5 :
     renderShapes( generateRandomNum(40,40) , "field");
     renderShapes( generateRandomNum(4,40) , "picked");
     break;
-    case 4 :
-    renderShapes( generateRandomNum(40,40) , "field");
-    renderShapes( generateRandomNum(5,40) , "picked");
-    break;
-    case 5 :
+    case 6 :
     renderShapes( generateRandomNum(50,50) , "field");
     renderShapes( generateRandomNum(5,50) , "picked");
     break;
-    case 6 :
-    renderShapes( generateRandomNum(60,60) , "field");
-    renderShapes( generateRandomNum(5,60) , "picked");
-    break;
     case 7 :
-    renderShapes( generateRandomNum(70,70) , "field");
-    renderShapes( generateRandomNum(6,70) , "picked");
+    renderShapes( generateRandomNum(60,60) , "field");
+    renderShapes( generateRandomNum(6,60) , "picked");
     break;
   }
   $('header').fadeIn(500)
