@@ -298,7 +298,7 @@ function timebar(){
     timewidth=100;
   }
   timewidth -= .05
-  if(timewidth <= 20){
+  if(timewidth <= 18){
     tick.play();
   }
   if(timewidth <= 0){
