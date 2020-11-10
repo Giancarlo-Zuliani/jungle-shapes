@@ -14,9 +14,22 @@ var timewidth = 100;
 var timer;
 var stp = 0;
 
+//SOUND
+var soundtrack = new Audio ('resources/audio/soundtrack.mp3');
+soundtrack.volume = 0.05;
+soundtrack.loop = true;
+var elphSound = new Audio ('resources/audio/eleph.mp3');
+elphSound.volume = 0.1;
+var introSound = new Audio ('resources/audio/entersfx.mp3');
+introSound.volume = 0.2;
+
+
+
 $('section').hide();
 $('#monkey').html(user.monkeyPoints);
 $('#eleph').html(user.elephPoints);
+
+
 
 //LEVELS TRIGGERS
 $('#level1').click(function(){
@@ -106,6 +119,7 @@ function renderShapes(arr,target){
 
 //LEVELS GENERATORS
 function levelstart(n){
+  introSound.play();
   $('.banner').hide(300);
   switch(n){
     case 1 :
@@ -159,10 +173,11 @@ function rightShape(shape){
 
 //FUNCTION ON CLICKED DOWN THE WRONG SHAPE
 function wrongShape(shape){
-$(shape).attr('src', "resources/elephface.png")
-$(shape).unbind('click')
-user.elephPoints-=1;
-$('#eleph').html(user.elephPoints);
+  elphSound.play();
+  $(shape).attr('src', "resources/elephface.png")
+  $(shape).unbind('click')
+  user.elephPoints-=1;
+  $('#eleph').html(user.elephPoints);
   if(user.elephPoints === 0){
     leveldoneBanner('fail')
   }
