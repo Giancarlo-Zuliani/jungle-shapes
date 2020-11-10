@@ -293,20 +293,40 @@ $('#soundPlayer').click(() =>{
 $('#container').hide();
 var bar = document.getElementById('timebar');
 function timebar(){
-  $('#container').show();
-  if(stp == 0){
-    timer = setInterval(timebar , 4)
-    stp = 1
-    timewidth=100;
+  var isFirefox = typeof InstallTrigger !== 'undefined';
+  if(isFirefox){
+    $('#container').show();
+    if(stp == 0){
+      timer = setInterval(timebar , 1)
+      stp = 1
+      timewidth=100;
+    }
+    timewidth -= .04
+    if(timewidth <= 16){
+      tick.play();
+    }
+    if(timewidth <= 0){
+      clearInterval(timer);
+      leveldoneBanner('endtime');
+    }
+    $('#timebar').width(timewidth + '%');
+    $('#timebar').html(timewidth.toFixed(0) + '%')
+  }else{
+    $('#container').show();
+    if(stp == 0){
+      timer = setInterval(timebar , 2)
+      stp = 1
+      timewidth=100;
+    }
+    timewidth -= .01
+    if(timewidth <= 16){
+      tick.play();
+    }
+    if(timewidth <= 0){
+      clearInterval(timer);
+      leveldoneBanner('endtime');
+    }
+    $('#timebar').width(timewidth + '%');
+    $('#timebar').html(timewidth.toFixed(0) + '%')
   }
-  timewidth -= .05
-  if(timewidth <= 18){
-    tick.play();
-  }
-  if(timewidth <= 0){
-    clearInterval(timer);
-    leveldoneBanner('endtime');
-  }
-  $('#timebar').width(timewidth + '%');
-  $('#timebar').html(timewidth.toFixed(0) + '%')
 };
