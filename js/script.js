@@ -33,6 +33,8 @@ alarm.volume=0.2;
 var discoverSound = new Audio ('resources/audio/positive.mp3');
 discoverSound.volume = 0.4;
 
+
+$('.disabled').attr('disabled' , true)
 $('section').hide();
 $('#monkey').html(user.monkeyPoints);
 $('#eleph').html(user.elephPoints);
@@ -242,27 +244,27 @@ function showMainMenu(){
 //CHECK MONKEYS NUM FOR UNLOCK FURTHER LEVELS
 function checkMonkey(){
   var btn = $('main button')
-  if(user.monkeyPoints >= 23){
+  if(user.monkeyPoints >= 21){
     for(i = 0 ; i < btn.length;i++){
       btn.eq(i).attr('disabled' , false).removeClass('disabled');
       btn.eq(i).children('span').html('');
     }
-  }else if (user.monkeyPoints >= 18 && user.monkeyPoints < 23){
+  }else if (user.monkeyPoints >= 16 && user.monkeyPoints < 21){
     for(i=0;i< (btn.length -1);i++){
       btn.eq(i).attr('disabled' , false).removeClass('disabled');
       btn.eq(i).children('span').html('');
     }
-  }else if(user.monkeyPoints < 23 && user.monkeyPoints >= 13){
+  }else if(user.monkeyPoints < 23 && user.monkeyPoints >= 12){
     for(i=0;i< (btn.length -2);i++){
       btn.eq(i).attr('disabled' , false).removeClass('disabled');
       btn.eq(i).children('span').html('');
     }
-  }else if(user.monkeyPoints < 13 && user.monkeyPoints >= 9){
+  }else if(user.monkeyPoints < 13 && user.monkeyPoints >= 8){
     for(i=0;i< (btn.length -3);i++){
       btn.eq(i).attr('disabled' , false).removeClass('disabled');
       btn.eq(i).children('span').html('');
     }
-  }else if(user.monkeyPoints < 9 && user.monkeyPoints >= 6){
+  }else if(user.monkeyPoints < 9 && user.monkeyPoints >= 5){
     for(i=0;i< (btn.length -4);i++){
       btn.eq(i).attr('disabled' , false).removeClass('disabled');
       btn.eq(i).children('span').html('');
